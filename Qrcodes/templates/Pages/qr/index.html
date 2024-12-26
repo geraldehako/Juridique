@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer une Attestation</title>
+</head>
+<body>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="data" placeholder="Entrez des données pour le QR code" required>
+    <button type="submit">Générer QR Code</button>
+</form>
+
+{% if qr_code %}
+    <h3>QR Code généré :</h3>
+    <img src="{{ qr_code }}" alt="QR Code">
+{% endif %}
+</body>
+</html>

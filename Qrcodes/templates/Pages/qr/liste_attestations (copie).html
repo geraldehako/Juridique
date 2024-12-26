@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des Attestations</title>
+</head>
+<body>
+    <h1>Liste des Attestations Générées</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Numéro</th>
+                <th>Client</th>
+                <th>Superficie</th>
+                <th>Lotissement</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attestation in attestations %}
+            <tr>
+                <td>{{ attestation.type_attestation }}</td>
+                <td>{{ attestation.numero }}</td>
+                <td>{{ attestation.client.nom }} {{ attestation.client.prenoms }}</td>
+                <td>{{ attestation.superficie }}</td>
+                <td>{{ attestation.lotissement }}</td>
+                <td>
+                    <a href="{% url 'telecharger_attestation' attestation.id %}">Télécharger</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'creer_attestation' %}">Créer une nouvelle attestation</a>
+</body>
+</html>

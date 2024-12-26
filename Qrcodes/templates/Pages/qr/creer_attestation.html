@@ -1,0 +1,58 @@
+{% extends 'Pages/Base/base.html' %}
+
+{% block content %}
+<!-- start page title -->
+<style>
+    .btn-custom {
+        background-color: #072C84;
+        color: white;  
+    } 
+</style>
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">KHAGest</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="{% url 'liste_attestations' %}">Tableau de bord</a></li>
+                    <li class="breadcrumb-item active">Clients</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-6 d-flex align-items-center">
+                      <h6 class="mb-0">Consulter la liste des Clients Bénéficiés</h6>
+                    </div>
+                    <div class="col-6 text-end">
+                      <a class="btn btn-custom waves-effect waves-light" href="{% url 'creer_attestation' %}"><iconify-icon icon="mdi:content-save-plus"></iconify-icon>  Client</a>
+                    </div>
+                </div>
+                <br><br>
+    <form method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Informations Client</legend>
+            {{ client_form.as_p }}
+        </fieldset>
+        <fieldset>
+            <legend>Informations Attestation</legend>
+            {{ attestation_form.as_p }}
+        </fieldset>
+        <button type="submit">Créer et Télécharger</button>
+    </form>
+    <a href="{% url 'liste_attestations' %}">Voir la liste des attestations</a>
+</div>
+</div>
+</div> <!-- end col -->
+</div> <!-- end row -->
+{% endblock content %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer une Attestation</title>
+</head>
+<body>
+    <h1>Créer une Attestation</h1>
+    <form method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Informations Client</legend>
+            {{ client_form.as_p }}
+        </fieldset>
+        <fieldset>
+            <legend>Informations Attestation</legend>
+            {{ attestation_form.as_p }}
+        </fieldset>
+        <button type="submit">Créer et Télécharger</button>
+    </form>
+    <a href="{% url 'liste_attestations' %}">Voir la liste des attestations</a>
+</body>
+</html>
